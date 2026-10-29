@@ -4,9 +4,8 @@ select count(*) as No_of_copies from inventory where film_id in
 (select film_id from film where title = "Hunchback Impossible");
 
 -- List all films whose length is longer than the average length of all the films in the Sakila database.
-select film_id, round(avg(length),2) as Average from film 
-group by film_id 
-having Average > (select avg(length) from film);
+select film_id, length from film 
+where length > (select avg(length) from film);
 
 -- Use a subquery to display all actors who appear in the film "Alone Trip".
 
